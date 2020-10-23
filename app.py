@@ -1,12 +1,12 @@
 import os
 
-from creatures import Creature
+from game import game
 
 os.system('clear')
 print('game run')
 
-
-npc = Creature('Ivan')
-
-npc.say()
-npc.say('Who I am?')
+if __name__ == '__main__':
+    finish = False
+    while not finish:
+        command = input('>> ')
+        game.parse(command)

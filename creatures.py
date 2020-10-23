@@ -10,3 +10,6 @@ class Creature:
     def say(self, text:str='aaa'):
         print(text)
 
+
+    def info(self):
+        print(f'name {self.name} \n lvl {self.lvl}')
