@@ -9,4 +9,4 @@ if __name__ == '__main__':
     finish = False
     while not finish:
         command = input('>> ')
-        game.parse(command)
+        game.run_game(command)
