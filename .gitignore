@@ -4,5 +4,6 @@
 /__pycache__/*
 /share/*
 
+.app.py.swp
 *.pyc
 pyvenv.cfg

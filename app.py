@@ -1,12 +1,7 @@
-import os
+#!/usr/bin/env python
+# -*- coding: utf-8 -*
 
 from game import game
 
-os.system('clear')
-print('game run')
-
 if __name__ == '__main__':
-    finish = False
-    while not finish:
-        command = input('>> ')
-        game.run_game(command)
+    game.run_game()
