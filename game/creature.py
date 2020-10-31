@@ -11,8 +11,11 @@ class Creature:
 
 
     def info(self):
-        print('======enemy======')
-        print(f'name: {self.name}\nlvl: {self.lvl}\nhp: {self.hp}')
+        print(f'''===={self.name}====
+lvl: {self.lvl}
+hp: {self.hp}
+~skills:{self.skills}
+~inventory:{self.inventory}''')
 
 
 class Human(Creature):
@@ -24,11 +27,31 @@ class Knight(Human):
     def __init__(self, name:str='knight', lvl:int=1, hp:int=100):
         self.name = name
         self.lvl = lvl
-        self.hp = hp
+        self.hp = hp # human attr
+        self.skills = {
+            'strenght': 1,
+            'intellect': 1,
+            'luck':1,
+            }
+        self.inventory = { # Creature attr
+            'heal_posion': 5,
+            'berserk_posion': 2
+            }
         
     
-    def attack(self):
-        attack = random.randint(1, self.lvl*2)
+    def get_damage(self) -> int:
+        attack = random.randint(1, self.lvl*self.skills['strenght'])
         return attack
-        
+    
+    
+    def up_lvl(self, number_of_lvl:int) -> int:
+        for i in range(number_of_lvl):
+            print(f'====choise skill({i+1})===')
+            for j in self.skills:
+                print(f'({j[:1]}) {j}')
+            next_lvl = input('>>')
+            for k in self.skills:
+                if next_lvl == k[:1]:
+                    k+=1
+
     
