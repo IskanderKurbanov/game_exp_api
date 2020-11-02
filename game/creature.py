@@ -11,21 +11,19 @@ class Creature:
 
 
     def info(self):
-        print(f'''===={self.name}====
-lvl: {self.lvl}
-hp: {self.hp}
-~skills:{self.skills}
-~inventory:{self.inventory}''')
+        print(f'===={self.name}====')
+        print(f'lvl: {self.lvl}')
+        print(f'hp: {self.hp}')
+        print(f'~skills:{self.skills}')
+        print(f'~inventory:{self.inventory}')
 
 
 class Human(Creature):
-    pass
 
-
-class Knight(Human):
     
-    def __init__(self, name:str='knight', lvl:int=1, hp:int=100):
+    def __init__(self, name:str='knight', fate:str = 'man', lvl:int=1, hp:int=100):
         self.name = name
+        self.fate = fate
         self.lvl = lvl
         self.hp = hp # human attr
         self.skills = {
@@ -33,7 +31,7 @@ class Knight(Human):
             'intellect': 1,
             'luck':1,
             }
-        self.inventory = { # Creature attr
+        self.inventory = { # human attr
             'heal_posion': 5,
             'berserk_posion': 2
             }
@@ -45,6 +43,7 @@ class Knight(Human):
     
     
     def up_lvl(self, number_of_lvl:int) -> int:
+        self.lvl += number_of_lvl
         for i in range(number_of_lvl):
             print(f'====choise skill({i+1})===')
             for j in self.skills:
@@ -52,6 +51,6 @@ class Knight(Human):
             next_lvl = input('>>')
             for k in self.skills:
                 if next_lvl == k[:1]:
-                    k+=1
-
-    
+                    self.skills[k]+=1
+                    
+                    

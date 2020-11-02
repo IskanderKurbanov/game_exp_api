@@ -1,6 +1,6 @@
 import random
 import os
-from .creature import Knight
+from .creature import Human
 
 
 class Pte:
@@ -8,9 +8,7 @@ class Pte:
     
     def __init__(self):
         os.system('clear')
-        
         self.logs = 'Game begin'
-        
         self.stop_game = False
     
     
@@ -32,13 +30,15 @@ class Pte:
     
     def create_enemy(self):
         #this method create some person lol
-        i = random.randint(self.player.lvl,self.player.lvl+5)
-        self.person = Knight(f'knight#{i}', i, 100)
+        max_lvl = self.player.lvl
+        i = random.randint(self.player.lvl, max_lvl+5)
+        self.person = Human(f'knight#{i}', 'knight', i, 100)
         
     
     def create_player(self):
         name = input('==Create your hero==\nenter your name: ')
-        self.player = Knight(name, 1, 100)
+        self.player = Human(name, 'hero', 1, 100)
+        self.player.up_lvl(4)
         os.system('clear')
         
         
@@ -78,11 +78,12 @@ class Pte:
     
     def game_loop(self):
         while  not self.stop_game:
+            print('this game is not work now(((')
             if self.player.hp <= 0:
                 self.game_over('lose')
             if self.person.hp <= 0:
                 self.logs=f'{self.person.name} is dead'
-                self.player.lvl = self.player.up_lvl(self.person.lvl)
+                self.player.lvl = self.player.up_lvl(1)
                 self.create_enemy()
             self.get_info()
             self.print_logs()
